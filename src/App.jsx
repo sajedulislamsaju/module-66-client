@@ -3,16 +3,21 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
-
+  const [products , setProducts ] = useState();
+  useEffect (()=>{
+    fetch('')
+    .then (res => res.json())
+    .then (data => console.log(data))
+  })
   const [users, setUsers] = useState();
 
-  useEffect(() => {
-    fetch('http://localhost:5000/users')
-      .then(res => res.json())
-      .then(data => setUsers(data))
-    // .then ( data => console.log (data))
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/users')
+  //     .then(res => res.json())
+  //     .then(data => setUsers(data))
+  //   // .then ( data => console.log (data))
 
-  }, [])
+  // }, [])
 
   const handelAddUser = event => {
     event.preventDefault ();
