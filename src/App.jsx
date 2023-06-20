@@ -3,13 +3,17 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
-  const [products , setProducts ] = useState();
+  // const [products , setProducts ] = useState([]);
+  const [users, setUsers] = useState([]);
   useEffect (()=>{
-    fetch('')
+    fetch('http://localhost:5000/users')
     .then (res => res.json())
-    .then (data => console.log(data))
-  })
-  const [users, setUsers] = useState();
+    .then (data => setUsers(data))
+    
+  },[])
+
+  console.log(users)
+  
 
   // useEffect(() => {
   //   fetch('http://localhost:5000/users')
@@ -28,21 +32,18 @@ function App() {
 
   return (
     <>
-
-    <form onSubmit={handelAddUser}>
-      <input type="text" name="name" id="" />
-      <br />
-      <input type="email" name="email" id="" />
-      <br />
-      <input type="submit" value="Ddd me" />
-    </form>
-      <h1>Module Management of the project .</h1>
+    <h1>This is the client side .</h1>     
 
       <div>
         
-        {/* {
-          users.map (user => <h1 key={user.id}>{user?.neme}</h1>)
-        } */}
+        {
+          users.map(user => <div>
+            <h1 key={user.id}>{user?.name} </h1>
+            <h3>{user.email}</h3>
+            <h3>{user.id}</h3>
+            
+            </div>)
+        }
       </div>
     </>
   )
